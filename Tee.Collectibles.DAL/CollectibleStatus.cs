@@ -1,4 +1,4 @@
-﻿namespace Tee.Collectibles.DAL.Entities
+﻿namespace Tee.Collectibles.DAL
 {
     public enum CollectibleStatus
     {
