@@ -1,7 +1,8 @@
+using Tee.Collectibles.Common.Entities;
+
 namespace Tee.Collectibles.DAL.Migrations
 {
     using System.Data.Entity.Migrations;
-    using Tee.Collectibles.DAL.Entities;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Tee.Collectibles.DAL.CollectibleContext>
     {

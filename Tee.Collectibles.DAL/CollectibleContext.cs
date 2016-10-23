@@ -1,7 +1,8 @@
-﻿namespace Tee.Collectibles.DAL
+﻿using Tee.Collectibles.Common.Entities;
+
+namespace Tee.Collectibles.DAL
 {
     using System.Data.Entity;
-    using Tee.Collectibles.DAL.Entities;
 
     public class CollectibleContext : DbContext
     {

@@ -1,4 +1,4 @@
-﻿namespace Tee.Collectibles.DAL.Entities
+﻿namespace Tee.Collectibles.Common.Entities
 {
     public class CollectibleType : IBaseEntity
     {
