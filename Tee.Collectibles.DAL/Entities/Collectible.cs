@@ -1,0 +1,11 @@
+﻿namespace Tee.Collectibles.DAL.Entities
+{
+    public class Collectible : IBaseEntity
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public CollectibleStatus Status { get; set; }
+        public CollectibleType Type { get; set; }
+    }
+}
