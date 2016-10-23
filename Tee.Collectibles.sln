@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tee.Collectibles.Api.Tests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tee.Collectibles.DAL", "Tee.Collectibles.DAL\Tee.Collectibles.DAL.csproj", "{DB753173-CE5C-4685-AFA2-288DA45BD69E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tee.Collectibles.Common", "Tee.Collectibles.Common\Tee.Collectibles.Common.csproj", "{8D60F324-D516-4135-9609-E676333597AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tee.Collectables.Services", "Tee.Collectables.Services\Tee.Collectables.Services.csproj", "{6B33ED49-E2ED-468F-8EAC-B4BEE0EB342B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{DB753173-CE5C-4685-AFA2-288DA45BD69E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB753173-CE5C-4685-AFA2-288DA45BD69E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB753173-CE5C-4685-AFA2-288DA45BD69E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D60F324-D516-4135-9609-E676333597AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D60F324-D516-4135-9609-E676333597AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D60F324-D516-4135-9609-E676333597AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D60F324-D516-4135-9609-E676333597AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B33ED49-E2ED-468F-8EAC-B4BEE0EB342B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B33ED49-E2ED-468F-8EAC-B4BEE0EB342B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B33ED49-E2ED-468F-8EAC-B4BEE0EB342B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B33ED49-E2ED-468F-8EAC-B4BEE0EB342B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

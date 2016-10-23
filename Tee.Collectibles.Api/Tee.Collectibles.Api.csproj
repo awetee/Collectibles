@@ -174,7 +174,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
@@ -206,11 +205,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\CollectibleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IServices\ICollectableService.cs" />
     <Compile Include="Migrations\201610231858323_InitialDB.cs" />
     <Compile Include="Migrations\201610231858323_InitialDB.Designer.cs">
       <DependentUpon>201610231858323_InitialDB.cs</DependentUpon>
@@ -294,6 +293,12 @@
     <EmbeddedResource Include="Migrations\201610231858323_InitialDB.resx">
       <DependentUpon>201610231858323_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tee.Collectibles.Common\Tee.Collectibles.Common.csproj">
+      <Project>{8d60f324-d516-4135-9609-e676333597ae}</Project>
+      <Name>Tee.Collectibles.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
