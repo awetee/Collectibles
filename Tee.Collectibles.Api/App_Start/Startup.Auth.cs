@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Web.Http;
+using System.Web.Http.Dispatcher;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using Tee.Collectibles.Api.Providers;
+using Tee.Collectibles.Api.App_Start;
+using Tee.Collectibles.Api.IoC;
 using Tee.Collectibles.Api.Models;
+using Tee.Collectibles.Api.Providers;
 
 namespace Tee.Collectibles.Api
 {
@@ -64,6 +64,15 @@ namespace Tee.Collectibles.Api
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+            var config = new HttpConfiguration();
+            config.Services.Replace(typeof(IHttpControllerActivator), new CompositionRoot());
+
+            FluentValidationConfig.SetupValidation(config);
+
+            WebApiConfig.Register(config);
+
+            app.UseWebApi(config);
         }
     }
 }

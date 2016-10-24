@@ -6,7 +6,7 @@ namespace Tee.Collectibles.Common.Repository
 
     public interface IRepository<T> where T : IBaseEntity
     {
-        int Add(T item);
+        int Insert(T item);
 
         IEnumerable<T> GetAll();
 

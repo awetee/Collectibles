@@ -68,6 +68,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tee.Collectables.Services\Tee.Collectables.Services.csproj">
+      <Project>{6B33ED49-E2ED-468F-8EAC-B4BEE0EB342B}</Project>
+      <Name>Tee.Collectables.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tee.Collectibles.Common\Tee.Collectibles.Common.csproj">
       <Project>{8D60F324-D516-4135-9609-E676333597AE}</Project>
       <Name>Tee.Collectibles.Common</Name>

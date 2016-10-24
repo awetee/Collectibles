@@ -1,4 +1,7 @@
-﻿namespace Tee.Collectibles.DAL.Repository
+﻿using System.IO;
+using Tee.Collectables.Services.Extensions;
+
+namespace Tee.Collectibles.DAL.Repository
 {
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -27,8 +30,10 @@
             return this.dbSet.Find(id);
         }
 
-        public int Add(T entity)
+        public int Insert(T entity)
         {
+            Guard.AgainstNull(entity, "Inserting entity");
+
             this.dbSet.Add(entity);
             this.context.SaveChanges();
             return entity.Id;
@@ -36,14 +41,28 @@
 
         public void Update(T entity)
         {
+            Guard.AgainstNull(entity, "Updating entity");
+            ValidateIsExistingEntity(entity);
+
             this.context.Entry(entity).State = EntityState.Modified;
             this.context.SaveChanges();
         }
 
         public void Delete(T entity)
         {
+            Guard.AgainstNull(entity, "Deleting entity");
+            ValidateIsExistingEntity(entity);
+
             this.context.Entry(entity).State = EntityState.Deleted;
             this.context.SaveChanges();
+        }
+
+        private void ValidateIsExistingEntity(T entity)
+        {
+            if (entity.Id == 0)
+            {
+                throw new InvalidDataException();
+            }
         }
     }
 }

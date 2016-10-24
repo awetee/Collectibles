@@ -1,12 +1,12 @@
 ﻿using Tee.Collectibles.Common.Entities;
+using Tee.Collectibles.Common.Services;
 
 namespace Tee.Collectibles.Api.Controllers
 {
     using System.Collections.Generic;
     using System.Web.Http;
-    using Tee.Collectibles.Api.IServices;
 
-    [Authorize]
+    //[Authorize]
     public class CollectibleController : ApiController
     {
         private readonly ICollectibleService _collectibleService;
@@ -18,13 +18,12 @@ namespace Tee.Collectibles.Api.Controllers
 
         public IEnumerable<Collectible> Get()
         {
-            return this._collectibleService.GetAll();
+            return this._collectibleService.GetAllCollectibles();
         }
 
-        [Route("GetById/{id}")]
         public Collectible Get(int id)
         {
-            return this._collectibleService.Get(id);
+            return this._collectibleService.GetCollectibleById(id);
         }
 
         public int Post(Collectible data)
@@ -39,7 +38,7 @@ namespace Tee.Collectibles.Api.Controllers
 
         public void Delete(int id)
         {
-            var collectible = this._collectibleService.Get(id);
+            var collectible = this._collectibleService.GetCollectibleById(id);
             this._collectibleService.Delete(collectible);
         }
     }

@@ -1,31 +1,24 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
 using Tee.Collectibles.Api.Controllers;
-using Tee.Collectibles.Api.IServices;
 using Tee.Collectibles.Common.Entities;
+using Tee.Collectibles.Common.Services;
 
 namespace Tee.Collectibles.Api.Tests.Controllers
 {
     [TestFixture]
-    public class CollectibleControllerTest
+    public class CollectibleControllerTest : BaseCollectibleTests
     {
-        private ICollectibleService collectableService;
-        private CollectibleController controller;
-        private List<Collectible> collectibles;
+        private ICollectibleService _collectableService;
+        private CollectibleController _controller;
 
         [SetUp]
         public void Setup()
         {
-            this.collectableService = Substitute.For<ICollectibleService>();
-            this.controller = new CollectibleController(this.collectableService);
-            this.collectibles = new List<Collectible>
-            {
-                new Collectible {Id = 1, Title = "First"},
-                new Collectible {Id = 2, Title = "Second"},
-            };
+            this._collectableService = Substitute.For<ICollectibleService>();
+            this._controller = new CollectibleController(this._collectableService);
         }
 
         [Test]
@@ -33,10 +26,10 @@ namespace Tee.Collectibles.Api.Tests.Controllers
         {
             // Arrange
 
-            this.collectableService.GetAll().Returns(collectibles.AsEnumerable());
+            this._collectableService.GetAllCollectibles().Returns(Collectibles.AsEnumerable());
 
             // Act
-            var result = controller.Get().ToList();
+            var result = _controller.Get().ToList();
 
             // Assert
             result.Should().NotBeNull();
@@ -48,10 +41,10 @@ namespace Tee.Collectibles.Api.Tests.Controllers
         {
             // Arrange
             var id = 1;
-            this.collectableService.Get(id).Returns(collectibles.First(c => c.Id == id));
+            this._collectableService.GetCollectibleById(id).Returns(Collectibles.First(c => c.Id == id));
 
             // Act
-            var result = controller.Get(id);
+            var result = _controller.Get(id);
 
             // Assert
             result.Should().NotBeNull();
@@ -63,10 +56,10 @@ namespace Tee.Collectibles.Api.Tests.Controllers
         {
             // Arrange
             var collectible = new Collectible();
-            this.collectableService.Add(collectible).Returns(3);
+            this._collectableService.Add(collectible).Returns(3);
 
             // Act
-            var result = controller.Post(collectible);
+            var result = _controller.Post(collectible);
 
             // Assert
             result.ShouldBeEquivalentTo(3);
@@ -79,10 +72,10 @@ namespace Tee.Collectibles.Api.Tests.Controllers
             var collectible = new Collectible();
 
             // Act
-            controller.Put(collectible);
+            _controller.Put(collectible);
 
             // Assert
-            this.collectableService.Received(1).Update(collectible);
+            this._collectableService.Received(1).Update(collectible);
         }
 
         [Test]
@@ -90,13 +83,13 @@ namespace Tee.Collectibles.Api.Tests.Controllers
         {
             // Arrange
             var id = 1;
-            this.collectableService.Get(1).Returns(this.collectibles.First(c => c.Id == id));
+            this._collectableService.GetCollectibleById(1).Returns(this.Collectibles.First(c => c.Id == id));
 
             // Act
-            controller.Delete(1);
+            _controller.Delete(1);
 
             // Assert
-            this.collectableService.Received(1).Delete(this.collectibles.First(c => c.Id == id));
+            this._collectableService.Received(1).Delete(this.Collectibles.First(c => c.Id == id));
         }
     }
 }

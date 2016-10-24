@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation.WebApi, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.WebApi.6.2.1.0\lib\Net45\FluentValidation.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -173,6 +181,9 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\FluentValidationConfig.cs" />
+    <Compile Include="App_Start\FluentValidationFilterAttribute.cs" />
+    <Compile Include="App_Start\FluentValidatorFactory.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -206,10 +217,10 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CollectibleController.cs" />
+    <Compile Include="IoC\CompositionRoot.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IServices\ICollectableService.cs" />
     <Compile Include="Migrations\201610231858323_InitialDB.cs" />
     <Compile Include="Migrations\201610231858323_InitialDB.Designer.cs">
       <DependentUpon>201610231858323_InitialDB.cs</DependentUpon>
@@ -295,9 +306,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tee.Collectables.Services\Tee.Collectables.Services.csproj">
+      <Project>{6b33ed49-e2ed-468f-8eac-b4bee0eb342b}</Project>
+      <Name>Tee.Collectables.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tee.Collectibles.Common\Tee.Collectibles.Common.csproj">
       <Project>{8d60f324-d516-4135-9609-e676333597ae}</Project>
       <Name>Tee.Collectibles.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tee.Collectibles.DAL\Tee.Collectibles.DAL.csproj">
+      <Project>{db753173-ce5c-4685-afa2-288da45bd69e}</Project>
+      <Name>Tee.Collectibles.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
