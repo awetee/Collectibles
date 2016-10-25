@@ -13,6 +13,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tee.Collectibles.Common", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tee.Collectables.Services", "Tee.Collectables.Services\Tee.Collectables.Services.csproj", "{6B33ED49-E2ED-468F-8EAC-B4BEE0EB342B}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Tee.Collectibles.Web", "Tee.Collectibles.Web\", "{B6B59BE3-8679-477F-AA15-B31B9EDBC98F}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50290"
+		Debug.AspNetCompiler.PhysicalPath = "Tee.Collectibles.Web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50290\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50290"
+		Release.AspNetCompiler.PhysicalPath = "Tee.Collectibles.Web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50290\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50290"
+		SlnRelativePath = "Tee.Collectibles.Web\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +60,10 @@ Global
 		{6B33ED49-E2ED-468F-8EAC-B4BEE0EB342B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B33ED49-E2ED-468F-8EAC-B4BEE0EB342B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B33ED49-E2ED-468F-8EAC-B4BEE0EB342B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6B59BE3-8679-477F-AA15-B31B9EDBC98F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6B59BE3-8679-477F-AA15-B31B9EDBC98F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6B59BE3-8679-477F-AA15-B31B9EDBC98F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6B59BE3-8679-477F-AA15-B31B9EDBC98F}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

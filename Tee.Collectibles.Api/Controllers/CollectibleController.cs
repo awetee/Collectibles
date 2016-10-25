@@ -1,4 +1,6 @@
-﻿using Tee.Collectibles.Common.Entities;
+﻿using System.Linq;
+using System.Web.Http.Cors;
+using Tee.Collectibles.Common.Entities;
 using Tee.Collectibles.Common.Services;
 
 namespace Tee.Collectibles.Api.Controllers
@@ -7,6 +9,7 @@ namespace Tee.Collectibles.Api.Controllers
     using System.Web.Http;
 
     //[Authorize]
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class CollectibleController : ApiController
     {
         private readonly ICollectibleService _collectibleService;
@@ -18,12 +21,14 @@ namespace Tee.Collectibles.Api.Controllers
 
         public IEnumerable<Collectible> Get()
         {
-            return this._collectibleService.GetAllCollectibles();
+            var result = this._collectibleService.GetAllCollectibles().ToList();
+            return result;
         }
 
         public Collectible Get(int id)
         {
-            return this._collectibleService.GetCollectibleById(id);
+            var result = this._collectibleService.GetCollectibleById(id);
+            return result;
         }
 
         public int Post(Collectible data)

@@ -1,0 +1,10 @@
+<h3>Collectibles</h3>
+<ul>
+	<li *ngFor="let collectible of collectibles | async">
+    <a [routerLink]="['/collectible', collectible.Id]">
+      {{ collectible.Title }}
+    </a>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>
