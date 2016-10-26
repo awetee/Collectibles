@@ -33,10 +33,19 @@ namespace Tee.Collectibles.DAL.Repository
         public int Insert(T entity)
         {
             Guard.AgainstNull(entity, "Inserting entity");
+            ValidateIsNotExistingEntity(entity);
 
             this.dbSet.Add(entity);
             this.context.SaveChanges();
             return entity.Id;
+        }
+
+        private void ValidateIsNotExistingEntity(T entity)
+        {
+            if (entity.Id != 0)
+            {
+                throw new InvalidDataException("Existing Data");
+            }
         }
 
         public void Update(T entity)
@@ -61,7 +70,7 @@ namespace Tee.Collectibles.DAL.Repository
         {
             if (entity.Id == 0)
             {
-                throw new InvalidDataException();
+                throw new InvalidDataException("New Data");
             }
         }
     }

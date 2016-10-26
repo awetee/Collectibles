@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CollectibleService} from '../shared/collectible.service';
+import {DataService} from '../../shared/data.service';
 import {Observable} from 'rxjs/Observable';
 import {ActivatedRoute} from '@angular/router';
 
@@ -11,7 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 export class CollectibleListComponent implements OnInit {
     collectibles: Observable<any>;
 
-    constructor(public collectibleService: CollectibleService) {
+    constructor(public collectibleService: DataService) {
     }
 
     ngOnInit() {

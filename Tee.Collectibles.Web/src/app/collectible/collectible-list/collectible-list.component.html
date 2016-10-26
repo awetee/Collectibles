@@ -1,10 +1,6 @@
-<h3>Collectibles</h3>
-<ul>
-	<li *ngFor="let collectible of collectibles | async">
-    <a [routerLink]="['/collectible', collectible.Id]">
-      {{ collectible.Title }}
+<div class="list-group">
+    <a class="list-group-item" *ngFor="let collectible of collectibles | async" [routerLink]="['/collectible', collectible.Id]">
+        {{ collectible.Title }}
     </a>
-  </li>
-</ul>
-
+</div>
 <router-outlet></router-outlet>
