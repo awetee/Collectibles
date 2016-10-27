@@ -5,6 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import { Router } from '@angular/router';
 
 @Component({
+    moduleId: module.id,
     selector: 'collectible-list',
     styleUrls: ['./collectible-list.component.css'],
     templateUrl: './collectible-list.component.html'
@@ -20,17 +21,14 @@ export class CollectibleListComponent implements OnInit {
     }
 
     onDelete(Id: string){
-        var collectibleObject = this.collectibles.filter(function( collectible ) {
-                return collectible.Id == Id;
-            });
 
         var confirmed = confirm("Are you sure you will like to delete")
 
         if(confirm){
             this.dataService.delete(Id).subscribe((result) => {
-                this.collectibles = this.collectibles.filter(function( collectible ) {
-                    return collectible.Id !== result;
-                });
+                // this.collectibles = this.collectibles.filter(function( collectible: any ) {
+                //     return collectible.Id !== result;
+                // });
                 this.router.navigate(['/collectible']);
             });
         }

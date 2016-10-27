@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Collectible } from '../shared/Collectible';
 
 @Component({
+    moduleId: module.id,
     selector: 'collectible-form',
     styleUrls: ['./collectible-form.component.css'],
     templateUrl: './collectible-form.component.html'

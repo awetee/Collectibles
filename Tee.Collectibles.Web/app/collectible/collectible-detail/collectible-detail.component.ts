@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Collectible } from '../shared/Collectible';
 
 @Component({
+    moduleId: module.id,
     selector: 'collectible-detail',
     styleUrls: ['./collectible-detail.component.css'],
     templateUrl: './collectible-detail.component.html'

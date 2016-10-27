@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DataService } from '../shared/data.service';
 
 @Component({
+    moduleId: module.id,
     selector: 'collectible',
     templateUrl: './collectible.component.html',
     styleUrls: ['./collectible.component.css']
