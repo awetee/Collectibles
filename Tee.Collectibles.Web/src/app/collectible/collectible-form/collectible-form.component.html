@@ -1,25 +1,32 @@
-<div class="container">
-    <h1>Collectible Form</h1>
-    <form>
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input name="title" [(ngModel)]="collectible.Title" type="text" class="form-control" id="title" required>
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <div>
-                <textarea name="description" cols="30" rows="5" [(ngModel)]="collectible.Description" class="form-group" id="description" required></textarea>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Collectible Form
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input name="title" [(ngModel)]="collectible.Title" type="text" class="form-control" id="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <div>
+                                <textarea name="description" cols="30" rows="5" [(ngModel)]="collectible.Description" class="form-group" id="description" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Collectible Type</label>
+                            <select name="type" class="form-control" id="type" [(ngModel)]="collectible.TypeId" required>
+                                <option *ngFor="let type of types" [value]="type.Id">{{type.Name}}</option>
+                            </select>
+                        </div>
+                        <button (click)="save()" type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="type">Collectible Type</label>
-            <select name="type" class="form-control" id="type" [(ngModel)]="collectible.TypeId" required>
-                <option *ngFor="let type of types" [value]="type.Id">{{type.Name}}</option>
-            </select>
-        </div>
-        <div class="checkbox">
-            <label><input  type="checkbox" name="isshared">Share</label>
-        </div>
-        <button (click)="save()" type="submit" class="btn btn-default">Submit</button>
-    </form>
+    </div>
 </div>

@@ -1,4 +1,9 @@
 <div class="list-group">
+    <div>
+        <a class="btn btn-info" [routerLink]="['/collectible/edit/0']" >New Collectible</a>
+    </div>
+    <br/>
+
     <a class="list-group-item" *ngFor="let collectible of collectibles | async" [routerLink]="['/collectible', collectible.Id]">
         {{ collectible.Title }}
     </a>

@@ -6,19 +6,14 @@
                     {{ collectibleDetails.Title }}
                 </div>
                 <div class="panel-body">
-                    <!--<pre>this.collectibleDetails = {{ collectibleDetails | json }}</pre>-->
                     <h4>Collectible Type</h4>
                     <p>{{collectibleType.Name}}</p>
                     <br />
                     <h4>Description</h4>
                     <p>{{collectibleDetails.Description}}</p>
+                    <a [routerLink]="['/collectible/edit/' + collectibleDetails.Id]">Edit</a>
                 </div>
-                <button data-toggle="collapse" data-target="#editCollectible">Edit</button>
             </div>
         </div>
-    </div>
-
-    <div class="col-lg-6">
-        <collectible-form></collectible-form>
     </div>
 </div>

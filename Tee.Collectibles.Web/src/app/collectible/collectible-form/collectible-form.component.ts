@@ -10,8 +10,7 @@ import { Collectible } from '../shared/Collectible';
     templateUrl: './collectible-form.component.html'
 })
 export class CollectibleFormComponent {
-    collectibleId: Collectible;
-    collectible: Collectible = new Collectible(1, 'Title', 'Description', true, 2);
+    collectible: Collectible = new Collectible();
     types: any =
     [
         { Id: 1, Name: "Technology" },
@@ -28,18 +27,43 @@ export class CollectibleFormComponent {
 
     editing: boolean = false;
 
+    isNewCollectible = true;
+
     constructor(public collectibleService: DataService, private route: ActivatedRoute, private router: Router) {
     }
 
-    onEditing(){
-        this.editing = true;
+        ngOnInit() {
+        this.route.params.subscribe(params => {
+            let id = params['collectibleId'] || '';
+            
+            if(id && id > 0)
+            {
+                this.isNewCollectible = false;
+            }
+
+            if (!this.isNewCollectible) {
+                this.collectibleService.getById(id)
+                    .subscribe(collectibleDetails => {
+                        this.collectible = new Collectible(collectibleDetails.Id, collectibleDetails.Title, collectibleDetails.Description, collectibleDetails.IsShared, collectibleDetails.TypeId);
+                    });
+            }
+        });
     }
 
     save() {
+        if(this.isNewCollectible){
         this.collectibleService.post(this.collectible)
             .subscribe(({name}) => {
                 console.log(name);
                 this.router.navigate(['/collectible']);
             });
+        }
+        else {
+            this.collectibleService.put(this.collectible)
+            .subscribe(({name}) => {
+                console.log(name);
+                this.router.navigate(['/collectible']);
+            });
+        }
     }
 }
