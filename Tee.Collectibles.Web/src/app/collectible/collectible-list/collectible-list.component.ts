@@ -20,11 +20,19 @@ export class CollectibleListComponent implements OnInit {
     }
 
     onDelete(Id: string){
-        this.dataService.delete(Id).subscribe((result) => {
-            this.collectibles = this.collectibles.filter(function( collectible ) {
-                return collectible.Id !== result;
+        var collectibleObject = this.collectibles.filter(function( collectible ) {
+                return collectible.Id == Id;
             });
-            this.router.navigate(['/collectible']);
-        });
+
+        var confirmed = confirm("Are you sure you will like to delete")
+
+        if(confirm){
+            this.dataService.delete(Id).subscribe((result) => {
+                this.collectibles = this.collectibles.filter(function( collectible ) {
+                    return collectible.Id !== result;
+                });
+                this.router.navigate(['/collectible']);
+            });
+        }
     }
 }
