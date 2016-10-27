@@ -21,13 +21,11 @@ export class DataService {
     }
 
     post(data: any) {
-        return this.http.post(this.Url, data)
-            .map((res) => res.json());
+        return this.http.post(this.Url, data);
     }
 
     put(data: any) {
-        return this.http.put(this.Url, data)
-            .map((res) => res.json());
+        return this.http.put(this.Url, data);
     }
 
     delete(path: string) {

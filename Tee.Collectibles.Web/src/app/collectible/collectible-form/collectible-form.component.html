@@ -23,7 +23,9 @@
                                 <option *ngFor="let type of types" [value]="type.Id">{{type.Name}}</option>
                             </select>
                         </div>
-                        <button (click)="save()" type="submit" class="btn btn-default">Submit</button>
+                        <span class="input-group-btn">
+                            <button (click)="save()" type="submit" class="btn btn-info">Submit</button>
+                        </span>
                     </form>
                 </div>
             </div>

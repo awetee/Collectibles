@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Http.Cors;
 using Tee.Collectibles.Common.Entities;
 using Tee.Collectibles.Common.Services;
@@ -19,32 +20,80 @@ namespace Tee.Collectibles.Api.Controllers
             _collectibleService = collectibleService;
         }
 
-        public IEnumerable<Collectible> Get()
+        public IHttpActionResult Get()
         {
-            var result = this._collectibleService.GetAllCollectibles().ToList();
-            return result;
+            IEnumerable<Collectible> result;
+            try
+            {
+                result = this._collectibleService.GetAllCollectibles().ToList();
+            }
+            catch (Exception)
+            {
+                return BadRequest("Can't retrieve collectibles");
+            }
+
+            return Ok(result);
         }
 
-        public Collectible Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            var result = this._collectibleService.GetCollectibleById(id);
-            return result;
+            Collectible result;
+
+            try
+            {
+                result = this._collectibleService.GetCollectibleById(id);
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
-        public int Post(Collectible data)
+        public IHttpActionResult Post(Collectible data)
         {
-            return this._collectibleService.Add(data);
+            int result;
+
+            try
+            {
+                result = this._collectibleService.Add(data);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
+            return Ok(result);
         }
 
-        public void Put(Collectible data)
+        public IHttpActionResult Put(Collectible data)
         {
-            this._collectibleService.Update(data);
+            try
+            {
+                this._collectibleService.Update(data);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
         }
 
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
-            var collectible = this._collectibleService.GetCollectibleById(id);
-            this._collectibleService.Delete(collectible);
+            try
+            {
+                var collectible = this._collectibleService.GetCollectibleById(id);
+                this._collectibleService.Delete(collectible);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
         }
     }
 }

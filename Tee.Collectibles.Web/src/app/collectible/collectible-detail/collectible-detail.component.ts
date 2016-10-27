@@ -34,27 +34,4 @@ export class CollectibleDetailComponent implements OnInit {
             }
         });
     }
-
-    deleteCollectible(id: string) {
-        this.dataService.delete(id)
-            .subscribe(({name}) => {
-                console.log(name);
-                this.router.navigate(['/collectible']);
-            });
-    }
-
-    updateCollectible() {
-        this.dataService.put(this.collectibleDetails)
-            .subscribe(() => {
-                this.router.navigate(['/collectible']);
-            });
-    }
-
-    save() {
-        this.dataService.post(this.collectibleDetails)
-            .subscribe(({name}) => {
-                console.log(name);
-                this.router.navigate(['/collectible']);
-            });
-    }
 }

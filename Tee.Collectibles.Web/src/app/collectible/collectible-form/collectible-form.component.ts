@@ -22,7 +22,8 @@ export class CollectibleFormComponent {
         { Id: 7, Name: "Aphemera" },
         { Id: 8, Name: "Clothing" },
         { Id: 9, Name: "Currency" },
-        { Id: 10, Name: "Sport" }
+        { Id: 10, Name: "Sport" },
+        { Id: 11, Name: "Music"}
     ];
 
     editing: boolean = false;
@@ -53,15 +54,13 @@ export class CollectibleFormComponent {
     save() {
         if(this.isNewCollectible){
         this.dataService.post(this.collectible)
-            .subscribe(({name}) => {
-                console.log(name);
+            .subscribe(() => {
                 this.router.navigate(['/collectible']);
             });
         }
         else {
             this.dataService.put(this.collectible)
-            .subscribe(({name}) => {
-                console.log(name);
+            .subscribe(() => {
                 this.router.navigate(['/collectible']);
             });
         }

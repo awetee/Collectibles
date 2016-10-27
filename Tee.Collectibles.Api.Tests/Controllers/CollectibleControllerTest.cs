@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http.Results;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
@@ -29,11 +31,12 @@ namespace Tee.Collectibles.Api.Tests.Controllers
             this._collectableService.GetAllCollectibles().Returns(Collectibles.AsEnumerable());
 
             // Act
-            var result = _controller.Get().ToList();
+            var actionResult = _controller.Get();
 
             // Assert
-            result.Should().NotBeNull();
-            result.Count().ShouldBeEquivalentTo(2);
+            var result = actionResult as OkNegotiatedContentResult<IEnumerable<Collectible>>;
+            result.Content.Should().NotBeNull();
+            result.Content.Count().ShouldBeEquivalentTo(2);
         }
 
         [Test]
@@ -44,11 +47,12 @@ namespace Tee.Collectibles.Api.Tests.Controllers
             this._collectableService.GetCollectibleById(id).Returns(Collectibles.First(c => c.Id == id));
 
             // Act
-            var result = _controller.Get(id);
+            var actionResult = _controller.Get(id);
 
             // Assert
-            result.Should().NotBeNull();
-            result.Id.ShouldBeEquivalentTo(id);
+            var result = actionResult as OkNegotiatedContentResult<Collectible>;
+            result.Content.Should().NotBeNull();
+            result.Content.Id.ShouldBeEquivalentTo(id);
         }
 
         [Test]
@@ -59,10 +63,11 @@ namespace Tee.Collectibles.Api.Tests.Controllers
             this._collectableService.Add(collectible).Returns(3);
 
             // Act
-            var result = _controller.Post(collectible);
+            var actionResult = _controller.Post(collectible);
+            var result = actionResult as OkNegotiatedContentResult<int>;
 
             // Assert
-            result.ShouldBeEquivalentTo(3);
+            result.Content.ShouldBeEquivalentTo(3);
         }
 
         [Test]
