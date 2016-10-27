@@ -31,8 +31,7 @@ export class DataService {
     }
 
     delete(path: string) {
-        return this.http.delete(this.Url + path)
-            .map((res) => res.json());
+        return this.http.delete(this.Url + path);
     }
 
 }

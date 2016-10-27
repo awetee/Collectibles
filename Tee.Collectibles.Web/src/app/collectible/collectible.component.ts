@@ -8,6 +8,6 @@ import { DataService } from '../shared/data.service';
     styleUrls: ['./collectible.component.css']
 })
 export class CollectibleComponent {
-    constructor(private router: Router, private collectibleService: DataService) {
+    constructor(private router: Router, private dataService: DataService) {
     }
 }

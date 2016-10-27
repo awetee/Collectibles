@@ -18,7 +18,7 @@ export class CollectibleDetailComponent implements OnInit {
         "Architecture", "Art", "Card", "Aphemera", "Clothing",
         "Currency", "Sport", "Music"];
 
-    constructor(public collectibleService: DataService, private route: ActivatedRoute, private router: Router) {
+    constructor(public dataService: DataService, private route: ActivatedRoute, private router: Router) {
     }
 
     ngOnInit() {
@@ -26,7 +26,7 @@ export class CollectibleDetailComponent implements OnInit {
             this.collectibleId = params['collectibleId'] || '';
 
             if (this.collectibleId) {
-                this.collectibleService.getById(this.collectibleId)
+                this.dataService.getById(this.collectibleId)
                     .subscribe(collectibleDetails => {
                         this.collectibleDetails = collectibleDetails;
                         this.collectibleType = collectibleDetails.Type;
@@ -36,7 +36,7 @@ export class CollectibleDetailComponent implements OnInit {
     }
 
     deleteCollectible(id: string) {
-        this.collectibleService.delete(id)
+        this.dataService.delete(id)
             .subscribe(({name}) => {
                 console.log(name);
                 this.router.navigate(['/collectible']);
@@ -44,14 +44,14 @@ export class CollectibleDetailComponent implements OnInit {
     }
 
     updateCollectible() {
-        this.collectibleService.put(this.collectibleDetails)
+        this.dataService.put(this.collectibleDetails)
             .subscribe(() => {
                 this.router.navigate(['/collectible']);
             });
     }
 
     save() {
-        this.collectibleService.post(this.collectibleDetails)
+        this.dataService.post(this.collectibleDetails)
             .subscribe(({name}) => {
                 console.log(name);
                 this.router.navigate(['/collectible']);

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DataService} from '../../shared/data.service';
 import {Observable} from 'rxjs/Observable';
 import {ActivatedRoute} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'collectible-list',
@@ -11,10 +12,19 @@ import {ActivatedRoute} from '@angular/router';
 export class CollectibleListComponent implements OnInit {
     collectibles: Observable<any>;
 
-    constructor(public collectibleService: DataService) {
+    constructor(public dataService: DataService, private router: Router) {
     }
 
     ngOnInit() {
-        this.collectibles = this.collectibleService.getAll();
+        this.collectibles = this.dataService.getAll();
+    }
+
+    onDelete(Id: string){
+        this.dataService.delete(Id).subscribe((result) => {
+            this.collectibles = this.collectibles.filter(function( collectible ) {
+                return collectible.Id !== result;
+            });
+            this.router.navigate(['/collectible']);
+        });
     }
 }

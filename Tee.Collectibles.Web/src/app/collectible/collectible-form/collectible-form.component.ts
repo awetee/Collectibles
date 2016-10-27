@@ -29,7 +29,7 @@ export class CollectibleFormComponent {
 
     isNewCollectible = true;
 
-    constructor(public collectibleService: DataService, private route: ActivatedRoute, private router: Router) {
+    constructor(public dataService: DataService, private route: ActivatedRoute, private router: Router) {
     }
 
         ngOnInit() {
@@ -42,7 +42,7 @@ export class CollectibleFormComponent {
             }
 
             if (!this.isNewCollectible) {
-                this.collectibleService.getById(id)
+                this.dataService.getById(id)
                     .subscribe(collectibleDetails => {
                         this.collectible = new Collectible(collectibleDetails.Id, collectibleDetails.Title, collectibleDetails.Description, collectibleDetails.IsShared, collectibleDetails.TypeId);
                     });
@@ -52,14 +52,14 @@ export class CollectibleFormComponent {
 
     save() {
         if(this.isNewCollectible){
-        this.collectibleService.post(this.collectible)
+        this.dataService.post(this.collectible)
             .subscribe(({name}) => {
                 console.log(name);
                 this.router.navigate(['/collectible']);
             });
         }
         else {
-            this.collectibleService.put(this.collectible)
+            this.dataService.put(this.collectible)
             .subscribe(({name}) => {
                 console.log(name);
                 this.router.navigate(['/collectible']);

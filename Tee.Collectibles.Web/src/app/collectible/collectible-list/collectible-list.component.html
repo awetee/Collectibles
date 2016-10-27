@@ -4,8 +4,14 @@
     </div>
     <br/>
 
-    <a class="list-group-item" *ngFor="let collectible of collectibles | async" [routerLink]="['/collectible', collectible.Id]">
-        {{ collectible.Title }}
+    <a class="list-group-item" *ngFor="let collectible of collectibles | async">
+        <div class="input-group">
+            {{ collectible.Title }}
+            <span class="input-group-btn">
+                <button [routerLink]="['/collectible', collectible.Id]" class="btn btn-info" type="button">View</button>
+                <button (click)="onDelete(collectible.Id)" class="btn btn-danger" type="button">Delete</button>
+            </span>
+    </div>
     </a>
 </div>
 <router-outlet></router-outlet>
